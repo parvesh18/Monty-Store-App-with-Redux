@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
-              <img src={Logo} className="mr-3 h-16" alt="FlowBite Logo" />
+              <img src={Logo} className="mr-3 h-12" alt="FlowBite Logo" />
               <span className="self-center text-2xl tracking-wider font-semibold whitespace-nowrap text-white">
                 Monty Store
               </span>
@@ -18,17 +18,17 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold uppercase text-white">
-                Resources
+                Subscribe
               </h2>
               <ul className="text-gray-400">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
-                    Flowbite
+                    You Tube
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:underline">
-                    Tailwind CSS
+                    Telegram
                   </a>
                 </li>
               </ul>
