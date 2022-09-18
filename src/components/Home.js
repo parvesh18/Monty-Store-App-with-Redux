@@ -1,9 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/Action";
 
 const Home = () => {
   // useState Hook
   const [products, setProducts] = useState([]);
+
+  // useDispatch Hook of React-Router-Dom
+  const dispatch = useDispatch();
 
   //   API url Link
   const APIURL = "https://fakestoreapi.com/products";
@@ -13,6 +18,11 @@ const Home = () => {
     let data = await fetch(APIURL);
     data = await data.json();
     setProducts(data);
+  };
+
+  // Function of 'Add To cart' button
+  const sendData = (item) => {
+    dispatch(addToCart(item));
   };
 
   //   useEffect Hook
@@ -34,18 +44,26 @@ const Home = () => {
               <div className="flex flex-col justify-center items-center my-auto ">
                 {/* img */}
                 <div>
-                  <img className="w-24 h-24  transition ease-in-out delay-150 duration-150 hover:-translate-y-1 hover:scale-125" src={item.image} alt="" />
+                  <img
+                    className="w-24 h-24  transition ease-in-out delay-150 duration-150 hover:-translate-y-1 hover:scale-125"
+                    src={item.image}
+                    alt=""
+                  />
                 </div>
                 {/* content */}
                 <div className="text-center mt-4">
-                    {/* title */}
-                  <h3 className="text-lg font-semibold">{item.title.slice(0,66)}</h3>
+                  {/* title */}
+                  <h3 className="text-lg font-semibold">
+                    {item.title.slice(0, 66)}
+                  </h3>
                   {/* price */}
-                  <h4 className="mt-2 font-semibold text-red-700">$ {item.price}</h4>
+                  <h4 className="mt-2 font-semibold text-red-700">
+                    $ {item.price}
+                  </h4>
                 </div>
                 {/* button */}
                 <div>
-                  <button className="bg-orange-600 text-white px-2 py-1 font-semibold rounded-md mt-4 shadow-lg shadow-orange-500/50 transition ease-in-out delay-150 duration-150 hover:-translate-y-1 hover:scale-110">
+                  <button onClick={sendData.bind(this,item)} className="bg-orange-600 text-white px-2 py-1 font-semibold rounded-md mt-4 shadow-lg shadow-orange-500/50 transition ease-in-out delay-150 duration-150 hover:-translate-y-1 hover:scale-110">
                     Add To Cart
                   </button>
                 </div>
